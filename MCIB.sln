@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCIB", "MCIB\MCIB.csproj", "{9D3B73BC-EA29-4FCE-8FAE-D52E33AC331C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D3B73BC-EA29-4FCE-8FAE-D52E33AC331C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3B73BC-EA29-4FCE-8FAE-D52E33AC331C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3B73BC-EA29-4FCE-8FAE-D52E33AC331C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3B73BC-EA29-4FCE-8FAE-D52E33AC331C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0763DD8-908C-44B4-8A48-D02DC2C89027}
+	EndGlobalSection
+EndGlobal
