@@ -40,7 +40,7 @@ namespace MCIB.Lang
                 }
                 catch (Exception ex)
                 {
-                    //LogManager.Instance.LogError("Switch", ex);
+                    LogManager.Instance.LogError("Switch", ex);
                     throw;
                 }
                 if (Resource != null)

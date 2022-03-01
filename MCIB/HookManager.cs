@@ -21,9 +21,10 @@ namespace MCIB
         [DllImport("user32.dll")]
         private static extern int CallNextHookEx(int hHook, int nCode, int wParam, ref KBDLLHOOKSTRUCT lParam);
         [DllImport("kernel32.dll")]
-        private static extern IntPtr GetModuleHandle(IntPtr path);
-        private IntPtr hHook;
-        private LowLevelKeyboardProcDelegate hookProc;
+        private static extern IntPtr GetModuleHandle(IntPtr path); 
+        private IntPtr hHook { get; set; }
+        private IntPtr Handle { get; }
+        private LowLevelKeyboardProcDelegate hookProc { get; set; }
         private static HookManager instance;
         public static HookManager Instance
         {
@@ -34,31 +35,36 @@ namespace MCIB
                 return instance;
             }
         }
-        private HookManager() { }
+        private HookManager()
+        {
+            Handle = GetModuleHandle(IntPtr.Zero);
+        }
         public void Hook()
         {
-            IntPtr hModule = GetModuleHandle(IntPtr.Zero);
             hookProc = new LowLevelKeyboardProcDelegate(LowLevelKeyboardProc);
-            hHook = SetWindowsHookEx(13, hookProc, hModule, 0);
+            hHook = SetWindowsHookEx(13, hookProc, Handle, 0);
         }
         private int LowLevelKeyboardProc(int nCode, int wParam, ref KBDLLHOOKSTRUCT lParam)
         {
-            if (nCode >= 0)
+            try
             {
-                switch (wParam)
+                if (nCode >= 0)
                 {
-                    //屏蔽下面的快捷键
-                    case 256:
-                    case 257:
-                    case 260:
-                    case 261:
-                        if ((lParam.vkCode == 0x1b && lParam.flags == 32) || (lParam.vkCode == 0x20 && lParam.flags == 32) ||
-                            (lParam.vkCode == 0x73 && lParam.flags == 32) || (lParam.vkCode == 0x1b && lParam.flags == 0) ||
-                            (lParam.vkCode == 0x5b && lParam.flags == 1) || (lParam.vkCode == 0x5c && lParam.flags == 1))
-                            return 1;
-                        break;
+                    switch (wParam)
+                    {
+                        case 256:
+                        case 257:
+                        case 260:
+                        case 261:
+                            if ((lParam.vkCode == 0x1b && lParam.flags == 32) || (lParam.vkCode == 0x20 && lParam.flags == 32) ||
+                                (lParam.vkCode == 0x73 && lParam.flags == 32) || (lParam.vkCode == 0x1b && lParam.flags == 0) ||
+                                (lParam.vkCode == 0x5b && lParam.flags == 1) || (lParam.vkCode == 0x5c && lParam.flags == 1))
+                                return 1;
+                            break;
+                    }
                 }
             }
+            catch { }
             return CallNextHookEx(0, nCode, wParam, ref lParam);
         }
         public void Release()

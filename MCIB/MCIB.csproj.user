@@ -9,12 +9,27 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="BlankWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="BlankWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DrawWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Lang\Chinese.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Lang\English.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Lang\Russian.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
