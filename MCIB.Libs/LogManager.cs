@@ -3,7 +3,7 @@ using Serilog.Core;
 using System;
 using System.IO;
 
-namespace MCIB
+namespace MCIB.Libs
 {
     public sealed class LogManager
     {

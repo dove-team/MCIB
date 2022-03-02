@@ -1,4 +1,4 @@
-﻿namespace MCIB.Lang
+﻿namespace MCIB.Libs
 {
     public enum LangType
     {

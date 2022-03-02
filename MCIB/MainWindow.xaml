@@ -51,6 +51,7 @@
                     <Button hc:BorderElement.CornerRadius="15" Width="160" Height="64" FontSize="24" FontWeight="Bold" Content="开始" Click="Button_Click" Margin="0,-320,0,0" />
                     <TextBlock Margin="0,100,0,0" Style="{StaticResource TipsContentStyle}" Text="请注意！" />
                     <TextBlock Margin="0,128,0,0" Style="{StaticResource TipsContentStyle}" Text="进入全屏，可以按 Alt + Ctrl + H 键退出。" />
+                    <CheckBox  x:Name="ckBox" Content="禁用Ctrl+Alt+Del" Foreground="White" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
                     <StackPanel VerticalAlignment="Bottom">
                         <TextBlock Text="MCIB - a Windows app" />
                         <TextBlock Margin="0,4,0,0" Text="Designed and Developed by micahel_eddy" />

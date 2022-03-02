@@ -1,4 +1,5 @@
 ﻿using HandyControl.Controls;
+using MCIB.Libs;
 using System;
 using System.Linq;
 using System.Windows;
@@ -17,6 +18,7 @@ namespace MCIB
         {
             try
             {
+                ckBox.IsChecked = !HookManager.Instance.GetTaskManagerStatus();
                 DragMove();
             }
             catch { }
@@ -46,6 +48,14 @@ namespace MCIB
             {
                 LogManager.Instance.LogError("FillBlackWindow", ex);
             }
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            HookManager.Instance.DisableTaskManager();
+        }
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            HookManager.Instance.EnableTaskManager();
         }
     }
 }
