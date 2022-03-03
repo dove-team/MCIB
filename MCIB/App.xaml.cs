@@ -28,18 +28,20 @@ namespace MCIB
         protected override void OnStartup(StartupEventArgs e)
         {
             var applicationName = Assembly.GetExecutingAssembly().GetName().Name ?? string.Empty;
-            using var mutex = new Mutex(true, applicationName, out bool createNew);
-            if (createNew)
+            using (var mutex = new Mutex(true, applicationName, out bool createNew))
             {
-                base.OnStartup(e);
-                LangManager.Instance.Init();
+                if (createNew)
+                {
+                    base.OnStartup(e);
+                    LangManager.Instance.Init();
+                }
+                else
+                {
+                    MessageBox.Show("程序已经启动了！");
+                    Current.Shutdown();
+                }
+                mutex.ReleaseMutex();
             }
-            else
-            {
-                MessageBox.Show("程序已经启动了！");
-                Current.Shutdown();
-            }
-            mutex.ReleaseMutex();
         }
         protected override void OnExit(ExitEventArgs e)
         {

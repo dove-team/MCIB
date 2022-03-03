@@ -60,5 +60,17 @@ namespace MCIB
             if (!HookManager.Instance.EnableTaskManager())
                 MessageBox.Show("启用快捷启动任务管理器失败！");
         }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HookManager.Instance.EnableTaskManager();
+                System.Windows.Application.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+                LogManager.Instance.LogError("Shutdown", ex);
+            }
+        }
     }
 }

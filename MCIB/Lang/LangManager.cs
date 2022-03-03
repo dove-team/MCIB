@@ -31,8 +31,8 @@ namespace MCIB.Lang
         public LangType Current { get; private set; } = LangType.Chinese;
         public void Init()
         {
-            var cultureName = CultureInfo.CurrentCulture.Name;
-            if (!cultureName.Contains("zh", StringComparison.CurrentCultureIgnoreCase))
+            var cultureName = CultureInfo.CurrentCulture.Name.ToLower();
+            if (!cultureName.Contains("zh"))
             {
                 var langType = (cultureName.Contains("ru") || cultureName.Contains("be"))
                     ? LangType.Russian : LangType.English;
@@ -40,7 +40,7 @@ namespace MCIB.Lang
             }
             else
                 Resource = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                x.Source.ToString().Contains(Current.ToString(), StringComparison.CurrentCultureIgnoreCase));
+                x.Source.ToString().ToLower().Contains(Current.ToString().ToLower()));
         }
         public void Switch(LangType langType)
         {
@@ -60,9 +60,9 @@ namespace MCIB.Lang
                 if (Resource != null)
                 {
                     var resourceDictionary = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                      x.Source.ToString().Contains("Chinese", StringComparison.CurrentCultureIgnoreCase) ||
-                     x.Source.ToString().Contains("Russian", StringComparison.CurrentCultureIgnoreCase) ||
-                     x.Source.ToString().Contains("English", StringComparison.CurrentCultureIgnoreCase));
+                      x.Source.ToString().ToLower().Contains("chinese") ||
+                     x.Source.ToString().ToLower().Contains("Russian") ||
+                     x.Source.ToString().ToLower().Contains("English"));
                     if (resourceDictionary != null)
                         Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
                     Application.Current.Resources.MergedDictionaries.Add(Resource);

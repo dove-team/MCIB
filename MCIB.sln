@@ -5,7 +5,12 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCIB", "MCIB\MCIB.csproj", "{9D3B73BC-EA29-4FCE-8FAE-D52E33AC331C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCIB.Libs", "MCIB.Libs\MCIB.Libs.csproj", "{4B0BE453-8174-4B7E-A41C-1620B0910CC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MCIB.Libs", "MCIB.Libs\MCIB.Libs.csproj", "{4B0BE453-8174-4B7E-A41C-1620B0910CC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EBC0F02B-3FC9-4285-91AF-FE90B18CA5B1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
