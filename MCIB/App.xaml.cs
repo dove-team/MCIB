@@ -12,15 +12,12 @@ namespace MCIB
 {
     public partial class App : Application
     {
+        public static bool IsAdministrator { get; private set; }
         public App() : base()
         {
-            WindowsIdentity identity = WindowsIdentity.GetCurrent();
+            using WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
-            if (!principal.IsInRole(WindowsBuiltInRole.Administrator))
-            {
-                MessageBox.Show("本程序需要管理员权限运行！", "提示", MessageBoxButton.OK, MessageBoxImage.Error);
-                Current.Shutdown();
-            }
+            IsAdministrator = !principal.IsInRole(WindowsBuiltInRole.Administrator);
             DispatcherUnhandledException += App_DispatcherUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskScheduler_UnobservedTaskException;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;

@@ -19,7 +19,10 @@ namespace MCIB
         {
             try
             {
-                ckBox.IsChecked = !HookManager.Instance.GetTaskManagerStatus();
+                if (App.IsAdministrator)
+                    ckBox.IsChecked = !HookManager.Instance.GetTaskManagerStatus();
+                else
+                    ckBox.IsEnabled = false;
                 DragMove();
             }
             catch { }

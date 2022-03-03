@@ -31,16 +31,17 @@ namespace MCIB.Lang
         public LangType Current { get; private set; } = LangType.Chinese;
         public void Init()
         {
-            var cultureName = CultureInfo.CurrentCulture.Name.ToLower();
-            if (!cultureName.Contains("zh"))
+            var cultureName = CultureInfo.CurrentCulture.Name;
+            if (!cultureName.Contains("zh", StringComparison.CurrentCultureIgnoreCase))
             {
-                var langType = (cultureName.Contains("ru") || cultureName.Contains("be"))
+                var langType = (cultureName.Contains("ru", StringComparison.CurrentCultureIgnoreCase)
+                    || cultureName.Contains("be", StringComparison.CurrentCultureIgnoreCase))
                     ? LangType.Russian : LangType.English;
                 Switch(langType);
             }
             else
                 Resource = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                x.Source.ToString().ToLower().Contains(Current.ToString().ToLower()));
+                x.Source.ToString().Contains(Current.ToString(), StringComparison.CurrentCultureIgnoreCase));
         }
         public void Switch(LangType langType)
         {
@@ -60,9 +61,9 @@ namespace MCIB.Lang
                 if (Resource != null)
                 {
                     var resourceDictionary = Application.Current.Resources.MergedDictionaries.FirstOrDefault(x =>
-                      x.Source.ToString().ToLower().Contains("chinese") ||
-                     x.Source.ToString().ToLower().Contains("Russian") ||
-                     x.Source.ToString().ToLower().Contains("English"));
+                      x.Source.ToString().Contains("chinese", StringComparison.CurrentCultureIgnoreCase) ||
+                     x.Source.ToString().Contains("Russian", StringComparison.CurrentCultureIgnoreCase) ||
+                     x.Source.ToString().Contains("English", StringComparison.CurrentCultureIgnoreCase));
                     if (resourceDictionary != null)
                         Application.Current.Resources.MergedDictionaries.Remove(resourceDictionary);
                     Application.Current.Resources.MergedDictionaries.Add(Resource);
