@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
+using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace MCIB
 {
@@ -51,11 +52,13 @@ namespace MCIB
         }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            HookManager.Instance.DisableTaskManager();
+            if (!HookManager.Instance.DisableTaskManager())
+                MessageBox.Show("禁用快捷启动任务管理器失败！");
         }
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            HookManager.Instance.EnableTaskManager();
+            if (!HookManager.Instance.EnableTaskManager())
+                MessageBox.Show("启用快捷启动任务管理器失败！");
         }
     }
 }

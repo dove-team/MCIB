@@ -96,30 +96,34 @@ namespace MCIB.Libs
                 regkey.Close();
             }
         }
-        public void EnableTaskManager()
+        public bool EnableTaskManager()
         {
             try
             {
                 var regkey = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System");
                 regkey.SetValue("DisableTaskMgr", 0, RegistryValueKind.DWord);
                 regkey.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 LogManager.Instance.LogError("EnableTaskManager", ex);
+                return false;
             }
         }
-        public void DisableTaskManager()
+        public bool DisableTaskManager()
         {
             try
             {
                 var regkey = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System");
                 regkey.SetValue("DisableTaskMgr", 1, RegistryValueKind.DWord);
                 regkey.Close();
+                return true;
             }
             catch (Exception ex)
             {
                 LogManager.Instance.LogError("DisableTaskManager", ex);
+                return false;
             }
         }
     }
