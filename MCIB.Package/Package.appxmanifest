@@ -7,13 +7,13 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="f077e40f-f4e1-4ec4-a136-c4296b8b6c1c"
-    Publisher="CN=Micha"
+    Name="291099323F566.MCIB"
+    Publisher="CN=88249BF6-0064-4C43-8287-9A77A67F8D63"
     Version="1.0.0.0" />
 
   <Properties>
-    <DisplayName>MCIB</DisplayName>
-    <PublisherDisplayName>Micha</PublisherDisplayName>
+    <DisplayName>摸鱼MCIB</DisplayName>
+    <PublisherDisplayName>Michael.E</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
